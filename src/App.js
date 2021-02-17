@@ -2,6 +2,9 @@ import './App.css';
 import NavBar from "./components/NavBar";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {About, Product, Blog, Contact, Faq} from "./components";
+import LoginPage from "./components/LoginPage";
+import {connect} from 'react-redux';
+import withAuthGuard from "./utils/withAuthGuard";
 
 function App() {
   return (
@@ -9,20 +12,18 @@ function App() {
         <Router>
             <NavBar/>
             <Switch>
-                <Route path={'/about'}>
+                <Route exact path={'/'} component={withAuthGuard(Product)}/>
+                <Route exact path={'/product'} component={withAuthGuard(Product)}/>
+                <Route exact path={'/blog'} component={withAuthGuard(Blog)}/>
+                <Route exact path={'/contact'} component={withAuthGuard(Contact)}/>
+                <Route exat path={'/about'}>
                     <About/>
                 </Route>
-                <Route path={'/product'}>
-                    <Product/>
-                </Route>
-                <Route path={'/blog'}>
-                    <Blog/>
-                </Route>
-                <Route path={'/contact'}>
-                    <Contact/>
-                </Route>
-                <Route path={'/faq'}>
+                <Route exact path={'/faq'}>
                     <Faq/>
+                </Route>
+                <Route exact path={'/login'}>
+                    <LoginPage/>
                 </Route>
             </Switch>
         </Router>
@@ -30,4 +31,6 @@ function App() {
   );
 }
 
-export default App;
+
+export default connect()(App);
+
