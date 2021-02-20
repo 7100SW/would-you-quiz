@@ -1,7 +1,4 @@
-import {
-  _loginUser,
-  _getUsers
-} from './_DATA.js'
+import { _loginUser, _getUsers } from "./_DATA.js";
 
 // export function getInitialData () {
 //   return Promise.all([
@@ -28,4 +25,3 @@ export function loginUser(userId, pwd) {
 export function getUsers() {
   return _getUsers();
 }
-

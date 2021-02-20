@@ -1,5 +1,5 @@
 const questionReducer = () => {
-    return [];
+  return [];
 };
 
 export default questionReducer;

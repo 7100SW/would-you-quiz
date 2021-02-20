@@ -1,5 +1,5 @@
 const answerReducer = () => {
-    return [];
-}
+  return [];
+};
 
 export default answerReducer;

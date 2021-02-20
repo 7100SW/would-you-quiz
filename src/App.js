@@ -1,36 +1,32 @@
-import './App.css';
+import "./App.css";
+import React from "react";
 import NavBar from "./components/NavBar";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import {About, Product, Blog, Contact, Faq} from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Home, Question, Dashboard, Profile } from "./components";
 import LoginPage from "./components/LoginPage";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import withAuthGuard from "./utils/withAuthGuard";
 
 function App() {
   return (
     <div className="App">
-        <Router>
-            <NavBar/>
-            <Switch>
-                <Route exact path={'/'} component={withAuthGuard(Product)}/>
-                <Route exact path={'/product'} component={withAuthGuard(Product)}/>
-                <Route exact path={'/blog'} component={withAuthGuard(Blog)}/>
-                <Route exact path={'/contact'} component={withAuthGuard(Contact)}/>
-                <Route exat path={'/about'}>
-                    <About/>
-                </Route>
-                <Route exact path={'/faq'}>
-                    <Faq/>
-                </Route>
-                <Route exact path={'/login'}>
-                    <LoginPage/>
-                </Route>
-            </Switch>
-        </Router>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path={"/login"} component={LoginPage} />
+          <Route exact path={"/home"} component={withAuthGuard(Home)} />
+          <Route exact path={"/question"} component={withAuthGuard(Question)} />
+          <Route
+            exact
+            path={"/dashboard"}
+            component={withAuthGuard(Dashboard)}
+          />
+          <Route exact path={"/profile"} component={withAuthGuard(Profile)} />
+          <Route exact path={"/"} component={withAuthGuard(Home)} />
+        </Switch>
+      </Router>
     </div>
   );
 }
 
-
 export default connect()(App);
-
