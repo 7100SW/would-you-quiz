@@ -30,8 +30,8 @@ const useStyles = makeStyles({
 
 const navLinks = [
   { title: `home`, path: `/home` },
-  { title: `new question`, path: `/question` },
   { title: `leader board`, path: `/dashboard` },
+  { title: `new question`, path: `/question/create` },
   { title: `profile`, path: `/profile` },
 ];
 

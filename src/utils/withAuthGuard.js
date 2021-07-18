@@ -19,6 +19,7 @@ const withAuthGuard = (ComposedComponent) => {
 
     _checkAndRedirect() {
       const { isAuthenticated } = this.props;
+      console.debug("CheckAndRedirect", isAuthenticated);
 
       if (!isAuthenticated) {
         this.props.history.push("/login");

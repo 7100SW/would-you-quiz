@@ -26,7 +26,7 @@ class LoginPage extends Component {
 
     this.state = {
       credentials: {
-        userid: "",
+        userid: "johndoe",
         password: "P@ssw0rd!",
       },
       error: null,

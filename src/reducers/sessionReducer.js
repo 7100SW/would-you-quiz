@@ -14,6 +14,25 @@ const sessionReducer = (state = defaultState, action) => {
         user: action.payload,
       };
 
+    case types.ADD_ANSWER_SUCCESS: {
+      const { qId, answer } = action.payload;
+
+      let user = state.user;
+      user.answers = {
+        ...user.answers,
+        [qId]: answer,
+      };
+
+      console.log("[DEBUG], ADD_ANSWER_SUCCESS", user);
+
+      return {
+        ...state,
+        user: {
+          ...user,
+        },
+      };
+    }
+
     default:
       return state;
   }

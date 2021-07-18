@@ -5,12 +5,7 @@ let users = {
     id: "sarahedo",
     name: "Sarah Edo",
     avatarURL: null,
-    answers: {
-      "8xf0y6ziyjabvozdd253nd": "optionOne",
-      "6ni6ok3ym7mf1p33lnez": "optionTwo",
-      am8ehyc8byjqgar0jgpub9: "optionTwo",
-      loxhs1bqm25b708cmbf3g: "optionTwo",
-    },
+    answers: {},
     questions: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"],
   },
   tylermcginnis: {
@@ -27,11 +22,7 @@ let users = {
     id: "johndoe",
     name: "John Doe",
     avatarURL: null,
-    answers: {
-      xj352vofupe1dqz9emx13r: "optionOne",
-      vthrdm985a262al8qx3do: "optionTwo",
-      "6ni6ok3ym7mf1p33lnez": "optionTwo",
-    },
+    answers: {},
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
 };
@@ -211,7 +202,14 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
         },
       };
 
-      res();
+      console.log(
+        "[DEBUG] Save Answer to Question",
+        authedUser,
+        qid,
+        answer,
+        users
+      );
+      res({ qid, answer, user: authedUser });
     }, 500);
   });
 }
