@@ -29,3 +29,16 @@ export function formatTweet(tweet, author, authedUser, parentTweet) {
 export function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export function formatAsDateTime(ts) {
+  const pad = (n, s = 2) => `${new Array(s).fill(0)}${n}`.slice(-s);
+  const d = new Date(ts);
+
+  return `${pad(d.getFullYear(), 4)}-${pad(d.getMonth() + 1)}-${pad(
+    d.getDate()
+  )} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+
+export function capitalizeFirstLetter(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}

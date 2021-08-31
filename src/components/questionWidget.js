@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import PropTypes from "prop-types";
-import { capitalize } from "../utils/helpers";
+import { capitalize, formatAsDateTime } from "../utils/helpers";
+import { QuestionWidgetHeader } from "./questionWidgetHeader";
+
+QuestionWidgetHeader.propTypes = { dateCreated: PropTypes.string };
 
 class QuestionWidgetComponent extends Component {
   render() {
     const opt1Text = capitalize(this.props.opt1Text);
     const opt2Text = capitalize(this.props.opt2Text);
+    const dateCreated = formatAsDateTime(this.props.timestamp);
 
     return (
       <Box style={{ padding: "0px 8px" }}>
@@ -20,7 +24,7 @@ class QuestionWidgetComponent extends Component {
             width: "100%",
           }}
         >
-          <h2>Would you rather?</h2>
+          <QuestionWidgetHeader dateCreated={dateCreated} />
           <div style={{ textAlign: "left", paddingBottom: "0.5em" }}>
             {opt1Text}
           </div>
@@ -48,6 +52,7 @@ class QuestionWidgetComponent extends Component {
 
 QuestionWidgetComponent.propTypes = {
   id: PropTypes.number.isRequired,
+  timestamp: PropTypes.number.isRequired,
   opt1Text: PropTypes.string.isRequired,
   opt2Text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,

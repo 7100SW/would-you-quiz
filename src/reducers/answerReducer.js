@@ -17,6 +17,7 @@ const answerReducer = (state = defaultState, action) => {
         target = {
           optionOne: [],
           optionTwo: [],
+          totalCount: 0,
         };
       }
 
@@ -26,6 +27,7 @@ const answerReducer = (state = defaultState, action) => {
         target.optionTwo.push(uId);
       }
 
+      target.count = target.optionOne.length + target.optionTwo.length;
       return {
         ...state,
         [qId]: target,

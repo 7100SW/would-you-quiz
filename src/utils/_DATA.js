@@ -203,7 +203,7 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
       };
 
       console.log(
-        "[DEBUG] Save Answer to Question",
+        "[DEBUG] Save Answer to QuestionDetailComponent",
         authedUser,
         qid,
         answer,

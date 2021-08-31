@@ -8,7 +8,7 @@ import LoginPage from "./components/loginPage";
 import withAuthGuard from "./utils/withAuthGuard";
 import NavBar from "./components/navBar";
 import { runDataInit } from "./actions";
-import { Dashboard, Home, Profile, Question } from "./components";
+import { Dashboard, Home, Profile, QuestionDetail } from "./components";
 import CreatePollAnswer from "./components/createPollAnswer";
 import CreatePollQuestion from "./components/createPollQuestion";
 
@@ -24,7 +24,11 @@ class App extends Component {
         <Switch>
           <Route exact path={"/login"} component={LoginPage} />
           <Route exact path={"/home"} component={withAuthGuard(Home)} />
-          <Route exact path={"/question"} component={withAuthGuard(Question)} />
+          <Route
+            exact
+            path={"/question/:id"}
+            component={withAuthGuard(QuestionDetail)}
+          />
           <Route
             exact
             path={"/question/create"}

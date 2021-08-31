@@ -45,7 +45,13 @@ export class HomeComponent extends React.Component {
       }
     }
 
-    return list.sort(item => item.timestamp);
+    return list.sort((a,b) => {
+      if( a.timestamp === b.timestamp )
+        return 0;
+      else
+        return a.timestamp > b.timestamp ? -1 : 1;
+    });
+
   }
 
   /*
@@ -66,27 +72,36 @@ export class HomeComponent extends React.Component {
         list.push(poll);
       }
     }
+    return this.sortTimestampDescending(list);
 
-    return list.sort(item => item.timestamp);
+
   }
+
 
   createListItems(data) {
     if(!data) {
       return null;
     }
 
-    const list = data.map(item => {
+    console.log("List Item", JSON.stringify(data));
+
+    return data.map(item => {
       return (
           <li key={item.id} className={this.props.classes.list}>
-            <PollQuestionWidget id={item.id} question={item}></PollQuestionWidget>
+            <PollQuestionWidget id={item.id} question={item}/>
           </li>
       );
     });
-
-
-    return list;
   }
 
+  sortTimestampDescending(list) {
+    return list.sort((a, b) => {
+      if (a.timestamp === b.timestamp)
+        return 0;
+      else
+        return a.timestamp > b.timestamp ? -1 : 1;
+    });
+  }
 
   render() {
     const { classes, questions, answers, users, session } = this.props;

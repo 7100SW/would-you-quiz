@@ -44,7 +44,7 @@ class PollQuestionWidget extends Component {
   }
 
   handleOnViewPollResultsClick() {
-    alert("View poll");
+    this.props.history.push(`/question/${this.props.question.id}`);
   }
 
   render() {
@@ -64,6 +64,7 @@ class PollQuestionWidget extends Component {
               id={question.id}
               opt1Text={question.optionOne.text}
               opt2Text={question.optionTwo.text}
+              timestamp={question.timestamp}
               onClick={this.handleOnViewPollResultsClick}
             />
           ) : (
@@ -71,6 +72,7 @@ class PollQuestionWidget extends Component {
               id={question.id}
               opt1Text={question.optionOne.text}
               opt2Text={question.optionTwo.text}
+              timestamp={question.timestamp}
               onClick={this.handleOnGiveAnswerClick}
             />
           )}
