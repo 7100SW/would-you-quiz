@@ -6,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import { PollAnswerOptionStatsWidget } from "./pollAnswerOptionStatsWidget";
 
-// eslint-disable-next-line no-unused-vars
 const styles = () => ({
   root: {
     minWidth: "100%",
