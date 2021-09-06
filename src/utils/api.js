@@ -1,11 +1,11 @@
 /* eslint-disable */
 
 import {
-  _loginUser,
+  _getQuestions,
   _getUsers,
+  _loginUser,
   _saveQuestion,
   _saveQuestionAnswer,
-  _getQuestions,
 } from "./_DATA.js";
 
 export function getInitialData() {

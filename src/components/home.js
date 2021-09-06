@@ -28,8 +28,8 @@ export class HomeComponent extends React.Component {
   }
 
   /*
-  Get list of questions that has been answered by the user
-   */
+    Get list of questions that has been answered by the user
+     */
   getCompletedListData(questions, users, session) {
     const list = [];
 
@@ -50,8 +50,8 @@ export class HomeComponent extends React.Component {
   }
 
   /*
-  Get list of questions that user needs to answer
-   */
+    Get list of questions that user needs to answer
+     */
   getPendingListData(questions, users, session) {
     const list = [];
     const answers = session.user.answers;

@@ -1,5 +1,3 @@
-/* eslint-disable no-alert, no-console, no-unused-vars*/
-
 import * as types from "../constants/action-types";
 import * as API from "../utils/api";
 

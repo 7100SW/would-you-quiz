@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import * as types from "../constants/action-types";
 import * as API from "../utils/api";
 
@@ -11,13 +9,7 @@ export const addUserAnswer = (questionId, answer) => {
 
     try {
       const session = getState().session;
-
-      const response = await API.addUserAnswer(
-        questionId,
-        session.user.id,
-        answer
-      );
-
+      await API.addUserAnswer(questionId, session.user.id, answer);
       dispatch({
         type: types.ADD_ANSWER_SUCCESS,
         payload: {

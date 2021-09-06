@@ -1,4 +1,4 @@
-import { showLoading, hideLoading } from "react-redux-loading";
+import { hideLoading, showLoading } from "react-redux-loading";
 import * as types from "../constants/action-types";
 import * as API from "../utils/api";
 

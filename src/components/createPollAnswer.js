@@ -10,8 +10,8 @@ import Container from "@material-ui/core/Container";
 import {
   FormControl,
   FormControlLabel,
-  RadioGroup,
   Radio,
+  RadioGroup,
 } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { capitalize } from "../utils/helpers";
@@ -63,7 +63,7 @@ class CreatePollAnswer extends Component {
   }
 
   render() {
-    const { classes, question } = this.props;
+    const { question } = this.props;
     const option1Text = capitalize(question.optionOne.text);
     const option2Text = capitalize(question.optionTwo.text);
     const author = question.askedBy;
