@@ -46,14 +46,6 @@ export function getInitialData() {
     }
   );
 }
-//
-// export function saveLikeToggle (info) {
-//   return _saveLikeToggle(info)
-// }
-//
-// export function saveTweet (info) {
-//   return _saveTweet(info)
-// }
 
 export function loginUser(userId, pwd) {
   return _loginUser(userId, pwd);

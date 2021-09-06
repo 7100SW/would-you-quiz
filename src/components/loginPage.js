@@ -26,8 +26,8 @@ class LoginPage extends Component {
 
     this.state = {
       credentials: {
-        userid: "johndoe",
-        password: "P@ssw0rd!",
+        userid: "johndoe", // Note: hardcoded default to make testing faster
+        password: "P@ssw0rd!", // Note: hardcoded default to make testing faster
       },
       error: null,
     };
