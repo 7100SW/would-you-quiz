@@ -6,8 +6,8 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
-import PollQuestionWidget from "./pollQuestionWidget";
 import Container from "@material-ui/core/Container";
+import PollQuestionWidget from "./pollQuestionWidget";
 
 const styles = (theme) => ({
   list: {
@@ -28,12 +28,12 @@ export class HomeComponent extends React.Component {
   }
 
   /*
-    Get list of questions that has been answered by the user
-     */
+      Get list of questions that has been answered by the user
+       */
   getCompletedListData(questions, users, session) {
     const list = [];
 
-    for (let key in session.user.answers) {
+    for (const key in session.user.answers) {
       const poll = questions[key];
 
       if (poll) {
@@ -45,18 +45,18 @@ export class HomeComponent extends React.Component {
 
     return list.sort((a, b) => {
       if (a.timestamp === b.timestamp) return 0;
-      else return a.timestamp > b.timestamp ? -1 : 1;
+      return a.timestamp > b.timestamp ? -1 : 1;
     });
   }
 
   /*
-    Get list of questions that user needs to answer
-     */
+      Get list of questions that user needs to answer
+       */
   getPendingListData(questions, users, session) {
     const list = [];
-    const answers = session.user.answers;
+    const { answers } = session.user;
 
-    for (let key in questions) {
+    for (const key in questions) {
       const response = answers[key];
       if (!response) {
         const poll = questions[key];
@@ -73,19 +73,17 @@ export class HomeComponent extends React.Component {
       return null;
     }
 
-    return data.map((item) => {
-      return (
-        <li key={item.id} className={this.props.classes.list}>
-          <PollQuestionWidget id={item.id} question={item} />
-        </li>
-      );
-    });
+    return data.map((item) => (
+      <li key={item.id} className={this.props.classes.list}>
+        <PollQuestionWidget id={item.id} question={item} />
+      </li>
+    ));
   }
 
   sortTimestampDescending(list) {
     return list.sort((a, b) => {
       if (a.timestamp === b.timestamp) return 0;
-      else return a.timestamp > b.timestamp ? -1 : 1;
+      return a.timestamp > b.timestamp ? -1 : 1;
     });
   }
 
@@ -146,14 +144,12 @@ HomeComponent.propTypes = {
   users: PropTypes.object,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    questions: state.questions,
-    answers: state.answers,
-    users: state.users,
-    session: state.session,
-  };
-};
+const mapStateToProps = (state) => ({
+  questions: state.questions,
+  answers: state.answers,
+  users: state.users,
+  session: state.session,
+});
 
 export const Home = connect(
   mapStateToProps,

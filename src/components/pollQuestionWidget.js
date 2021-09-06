@@ -26,9 +26,9 @@ class PollQuestionWidget extends Component {
     super(props);
 
     this.handleOnGiveAnswerClick = this.handleOnGiveAnswerClick.bind(this);
-    this.handleOnViewPollResultsClick = this.handleOnViewPollResultsClick.bind(
-      this
-    );
+
+    this.handleOnViewPollResultsClick =
+      this.handleOnViewPollResultsClick.bind(this);
   }
 
   handleOnGiveAnswerClick() {

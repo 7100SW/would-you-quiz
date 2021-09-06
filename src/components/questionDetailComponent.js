@@ -17,16 +17,15 @@ const styles = (theme) => ({
 export class QuestionDetailComponent extends React.Component {
   constructor(props) {
     super(props);
-    console.log("[DEBUG] QuestionDetailComponent", props);
   }
 
   render() {
     const { question, answers } = this.props;
     if (question.hasAnswer) {
       return <PollAnswerWidget question={question} answers={answers} />;
-    } else {
-      return <h2>Question Details with No Answer</h2>;
-    }
+    } 
+
+    return <h2>Question Details with No Answer</h2>;
   }
 }
 
@@ -36,9 +35,7 @@ QuestionDetailComponent.propTypes = {
   answers: PropTypes.object,
 };
 
-const mapDispatchToProps = () => {
-  return {};
-};
+const mapDispatchToProps = () => ({});
 
 function mapStateToProps(state, props) {
   const { id } = props.match.params;

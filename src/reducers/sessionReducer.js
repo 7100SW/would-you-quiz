@@ -17,13 +17,11 @@ const sessionReducer = (state = defaultState, action) => {
     case types.ADD_ANSWER_SUCCESS: {
       const { qId, answer } = action.payload;
 
-      let user = state.user;
+      const {user} = state;
       user.answers = {
         ...user.answers,
         [qId]: answer,
       };
-
-      console.log("[DEBUG], ADD_ANSWER_SUCCESS", user);
 
       return {
         ...state,

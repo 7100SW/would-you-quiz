@@ -1,21 +1,21 @@
 import * as types from "../constants/action-types";
 import * as API from "../utils/api";
 
-export const addUserAnswer = (questionId, answer) => {
-  return async (dispatch, getState) => {
+export const addUserAnswer =
+  (questionId, answer) => async (dispatch, getState) => {
     dispatch({
       type: types.ADD_ANSWER_STARTED,
     });
 
     try {
-      const session = getState().session;
+      const { session } = getState();
       await API.addUserAnswer(questionId, session.user.id, answer);
       dispatch({
         type: types.ADD_ANSWER_SUCCESS,
         payload: {
           qId: questionId,
           uId: session.user.id,
-          answer: answer,
+          answer,
         },
       });
 
@@ -28,4 +28,3 @@ export const addUserAnswer = (questionId, answer) => {
       });
     }
   };
-};

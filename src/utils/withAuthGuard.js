@@ -1,3 +1,4 @@
+/* eslint-disable */
 // The following code is a derivative work of the code from a blog article
 // published here:
 // https://www.codementor.io/@sahilmittal/using-higher-order-components-for-authenticated-routing-i1hcp6pc6

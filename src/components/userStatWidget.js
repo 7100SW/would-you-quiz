@@ -6,9 +6,9 @@ import { withStyles } from "@material-ui/core/styles";
 import { Card } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
 import Divider from "@material-ui/core/Divider";
-import { UserWidget } from "./userWidget";
 import Grid from "@material-ui/core/Grid";
 import TotalScoreWidget from "./totalScoreWidget";
+import { UserWidget } from "./userWidget";
 
 // eslint-disable-next-line no-unused-vars
 const styles = (theme) => ({

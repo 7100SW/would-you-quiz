@@ -32,7 +32,6 @@ const styles = () => ({
 
 class PollAnswerWidget extends React.Component {
   render() {
-    console.log("[DEBUG] PollAnswerWidget", this.props);
     const { classes } = this.props;
     const { askedBy: author } = this.props.question;
     const { count: totalVotes } = this.props.answers;
@@ -40,13 +39,13 @@ class PollAnswerWidget extends React.Component {
     return (
       <Grid
         className={classes.root}
-        alignItems={"center"}
-        justifyContent={"center"}
+        alignItems="center"
+        justifyContent="center"
         container
       >
         <Card className={classes.card}>
           <CardHeader
-            title={"Asked By: " + author.name}
+            title={`Asked By: ${  author.name}`}
             className={classes.cardHeader}
           />
           <CardContent
@@ -56,9 +55,9 @@ class PollAnswerWidget extends React.Component {
           >
             <Grid
               container
-              direction={"column"}
-              justifyContent={"flex-start"}
-              alignItems={"stretch"}
+              direction="column"
+              justifyContent="flex-start"
+              alignItems="stretch"
               spacing={3}
               style={{
                 padding: "1.0rem",

@@ -1,5 +1,3 @@
-/* eslint-disable no-alert, no-console, no-unused-vars*/
-
 let users = {
   sarahedo: {
     id: "sarahedo",
@@ -118,7 +116,7 @@ function generateUID() {
 export function _loginUser(userId, pwd) {
   return new Promise((res, rej) => {
     setTimeout(() => {
-      let user = users[userId];
+      const user = users[userId];
       if (user) res({ ...user });
       else rej("unknown user");
     }, 1000);
@@ -126,13 +124,13 @@ export function _loginUser(userId, pwd) {
 }
 
 export function _getUsers() {
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     setTimeout(() => res({ ...users }), 1000);
   });
 }
 
 export function _getQuestions() {
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     setTimeout(() => res({ ...questions }), 1000);
   });
 }
@@ -154,7 +152,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question) {
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
 
@@ -178,7 +176,7 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-  return new Promise((res, rej) => {
+  return new Promise((res) => {
     setTimeout(() => {
       users = {
         ...users,
@@ -202,13 +200,6 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
         },
       };
 
-      console.log(
-        "[DEBUG] Save Answer to QuestionDetailComponent",
-        authedUser,
-        qid,
-        answer,
-        users
-      );
       res({ qid, answer, user: authedUser });
     }, 500);
   });
