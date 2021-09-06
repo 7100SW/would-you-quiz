@@ -30,8 +30,8 @@ const useStyles = makeStyles({
 
 const navLinks = [
   { title: `home`, path: `/home` },
-  { title: `leader board`, path: `/dashboard` },
-  { title: `new question`, path: `/question/create` },
+  { title: `leader board`, path: `/leaderboard` },
+  { title: `new question`, path: `/add` },
   { title: `profile`, path: `/profile` },
 ];
 
@@ -43,9 +43,11 @@ const NavBar = () => {
       <AppBar position={"static"}>
         <Toolbar>
           <Container className={classes.navbarDisplayFlex}>
-            <IconButton edge={"start"} color={"inherit"} aria-label={"home"}>
-              <Home fontSize={"large"} />
-            </IconButton>
+            <Link to={"/home"}>
+              <IconButton edge={"start"} color={"inherit"} aria-label={"home"}>
+                <Home fontSize={"large"} />
+              </IconButton>
+            </Link>
             <List
               component={"nav"}
               aria-labelledby={"main navigation"}

@@ -25,7 +25,7 @@ const styles = () => ({
     alignItems: "start",
   },
   cardHeader: {
-    backgroundColor: "green",
+    backgroundColor: "lightBlue",
     width: "100%",
   },
 });
@@ -38,7 +38,12 @@ class PollAnswerWidget extends React.Component {
     const { count: totalVotes } = this.props.answers;
 
     return (
-      <Grid className={classes.root} alignItems={"center"} justify={"center"}>
+      <Grid
+        className={classes.root}
+        alignItems={"center"}
+        justifyContent={"center"}
+        container
+      >
         <Card className={classes.card}>
           <CardHeader
             title={"Asked By: " + author.name}

@@ -9,12 +9,10 @@ import { Badge } from "@material-ui/core";
 const styles = () => ({
   grid: {
     maxWidth: 640,
-    border: "1px solid black",
     alignItems: "center",
     justify: "space-between",
   },
   gridItem: {
-    border: "0px solid black",
     width: "100%",
   },
   badge: {
@@ -57,7 +55,7 @@ class TotalScoreWidget extends Component {
             badgeContent={score}
             color="primary"
             classes={{ badge: classes.badge }}
-          ></Badge>
+          />
         </Grid>
       </Grid>
     );

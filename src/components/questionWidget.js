@@ -51,7 +51,6 @@ class QuestionWidgetComponent extends Component {
 }
 
 QuestionWidgetComponent.propTypes = {
-  id: PropTypes.number.isRequired,
   timestamp: PropTypes.number.isRequired,
   opt1Text: PropTypes.string.isRequired,
   opt2Text: PropTypes.string.isRequired,

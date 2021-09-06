@@ -52,7 +52,7 @@ QuestionWithAnswerWidgetComponent.propTypes = {
   id: PropTypes.string.isRequired,
   opt1Text: PropTypes.string.isRequired,
   opt2Text: PropTypes.string.isRequired,
-  timestamp: PropTypes.string.isRequired,
+  timestamp: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

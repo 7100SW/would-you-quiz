@@ -1,5 +1,3 @@
-/* eslint-disable no-alert, no-console, no-unused-vars*/
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -8,6 +6,7 @@ import { FormControl, TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import { createPollQuestion } from "../actions";
+import { withRouter } from "react-router-dom";
 
 const styles = (theme) => ({
   container: {
@@ -48,11 +47,12 @@ class CreatePollQuestion extends Component {
       option1Text: "",
       option2Text: "",
     });
+
+    this.props.history.push(`/home`);
   }
 
   render() {
     const { questionText, option1Text, option2Text } = this.state;
-    const { classes } = this.props;
 
     return (
       <Container maxWidth={"md"}>
@@ -96,6 +96,7 @@ class CreatePollQuestion extends Component {
 CreatePollQuestion.propTypes = {
   classes: PropTypes.object.isRequired,
   createPollQuestion: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -105,7 +106,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(withStyles(styles)(CreatePollQuestion));
+export default withRouter(
+  connect(null, mapDispatchToProps)(withStyles(styles)(CreatePollQuestion))
+);

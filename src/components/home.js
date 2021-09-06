@@ -1,8 +1,7 @@
-/* eslint-disable */
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import {withStyles} from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -28,44 +27,38 @@ export class HomeComponent extends React.Component {
     };
   }
 
-
   /*
   Get list of questions that has been answered by the user
    */
   getCompletedListData(questions, users, session) {
     const list = [];
 
-    for(let key in session.user.answers) {
+    for (let key in session.user.answers) {
       const poll = questions[key];
 
-      if(poll) {
+      if (poll) {
         poll.askedBy = users[poll.author];
         poll.hasAnswer = true;
         list.push(poll);
       }
     }
 
-    return list.sort((a,b) => {
-      if( a.timestamp === b.timestamp )
-        return 0;
-      else
-        return a.timestamp > b.timestamp ? -1 : 1;
+    return list.sort((a, b) => {
+      if (a.timestamp === b.timestamp) return 0;
+      else return a.timestamp > b.timestamp ? -1 : 1;
     });
-
   }
 
   /*
   Get list of questions that user needs to answer
    */
   getPendingListData(questions, users, session) {
-
     const list = [];
-    console.log("Current Session", session.user);
     const answers = session.user.answers;
 
-    for(let key in questions) {
+    for (let key in questions) {
       const response = answers[key];
-      if(!response) {
+      if (!response) {
         const poll = questions[key];
         poll.askedBy = users[poll.author];
         poll.hasAnswer = false;
@@ -73,38 +66,31 @@ export class HomeComponent extends React.Component {
       }
     }
     return this.sortTimestampDescending(list);
-
-
   }
 
-
   createListItems(data) {
-    if(!data) {
+    if (!data) {
       return null;
     }
 
-    console.log("List Item", JSON.stringify(data));
-
-    return data.map(item => {
+    return data.map((item) => {
       return (
-          <li key={item.id} className={this.props.classes.list}>
-            <PollQuestionWidget id={item.id} question={item}/>
-          </li>
+        <li key={item.id} className={this.props.classes.list}>
+          <PollQuestionWidget id={item.id} question={item} />
+        </li>
       );
     });
   }
 
   sortTimestampDescending(list) {
     return list.sort((a, b) => {
-      if (a.timestamp === b.timestamp)
-        return 0;
-      else
-        return a.timestamp > b.timestamp ? -1 : 1;
+      if (a.timestamp === b.timestamp) return 0;
+      else return a.timestamp > b.timestamp ? -1 : 1;
     });
   }
 
   render() {
-    const { classes, questions, answers, users, session } = this.props;
+    const { classes, questions, users, session } = this.props;
 
     const pending = this.getPendingListData(questions, users, session);
     const completed = this.getCompletedListData(questions, users, session);
@@ -125,7 +111,6 @@ export class HomeComponent extends React.Component {
         </Paper>
 
         <Container className={classes.root} maxWidth={"lg"}>
-
           <Box
             value={this.state.activeTabIndex}
             index={0}
@@ -155,6 +140,10 @@ export class HomeComponent extends React.Component {
 
 HomeComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  session: PropTypes.object.isRequired,
+  questions: PropTypes.object,
+  answers: PropTypes.object,
+  users: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {
@@ -166,4 +155,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export const Home = connect(mapStateToProps, null)(withStyles(styles)(HomeComponent));
+export const Home = connect(
+  mapStateToProps,
+  null
+)(withStyles(styles)(HomeComponent));

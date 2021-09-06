@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { red } from "@material-ui/core/colors";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { QuestionWidget } from "./questionWidget";
@@ -14,13 +13,6 @@ import { QuestionWithAnswerWidget } from "./questionWithAnswerWidget";
 const styles = (theme) => ({
   root: {
     maxWidth: 640,
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  avatar: {
-    backgroundColor: red[500],
   },
   container: {
     padding: theme.spacing(3),
@@ -85,7 +77,6 @@ class PollQuestionWidget extends Component {
 PollQuestionWidget.propTypes = {
   classes: PropTypes.object.isRequired,
   question: PropTypes.object.isRequired,
-  isAnswered: PropTypes.bool.isRequired,
   history: PropTypes.object,
 };
 

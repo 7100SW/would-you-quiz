@@ -6,6 +6,10 @@ import Container from "@material-ui/core/Container";
 import UserStatWidget from "./userStatWidget";
 
 const styles = (theme) => ({
+  listItem: {
+    padding: theme.spacing(3),
+    listStyle: "none",
+  },
   list: {
     padding: theme.spacing(3),
   },
@@ -20,11 +24,9 @@ class DashboardComponent extends React.Component {
   }
 
   calcUserStats(pairs) {
-    console.log("[DEBUG] CalcUserStats", pairs);
     const list = [];
 
     for (const [, user] of Object.entries(pairs)) {
-      console.log(user);
       const userScore = {
         ...user,
         askedCounter: 0,
@@ -49,20 +51,17 @@ class DashboardComponent extends React.Component {
 
   render() {
     const { users, classes } = this.props;
-
     if (!users) {
       return null;
     }
-    console.log("[DEBUG] Render", users);
     const scores = this.calcUserStats(users);
-    console.log("[DEBUG] Scores", scores);
 
     return (
       <Container className={classes.root} maxWidth={"md"}>
-        <ul style={{ listStyle: "none", padding: "1rem" }}>
+        <ul className={classes.list}>
           {scores.map((user) => {
             return (
-              <li key={user.id} className={this.props.classes.list}>
+              <li key={user.id} className={classes.listItem}>
                 <UserStatWidget userStat={user} />
               </li>
             );
@@ -75,7 +74,7 @@ class DashboardComponent extends React.Component {
 
 DashboardComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  users: PropTypes.array,
+  users: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {

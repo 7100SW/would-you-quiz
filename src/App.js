@@ -31,7 +31,7 @@ class App extends Component {
           />
           <Route
             exact
-            path={"/question/create"}
+            path={"/add"}
             component={withAuthGuard(CreatePollQuestion)}
           />
           <Route
@@ -41,7 +41,7 @@ class App extends Component {
           />
           <Route
             exact
-            path={"/dashboard"}
+            path={"/leaderboard"}
             component={withAuthGuard(Dashboard)}
           />
           <Route exact path={"/profile"} component={withAuthGuard(Profile)} />

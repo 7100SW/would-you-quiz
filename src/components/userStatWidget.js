@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
-import { red } from "@material-ui/core/colors";
 import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core/styles";
 import { Card } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
@@ -17,17 +15,16 @@ const styles = (theme) => ({
   root: {
     maxWidth: 640,
   },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
   container: {
     padding: theme.spacing(3),
     display: "flex",
     flexDirection: "row",
+  },
+  divider: {
+    margin: "1em",
+  },
+  gridItem: {
+    flex: "1 0 auto",
   },
 });
 
@@ -50,12 +47,7 @@ class UserStatWidget extends Component {
             alignItems="center"
             align="center"
           >
-            <Grid
-              item
-              style={{
-                flex: "1 0 auto",
-              }}
-            >
+            <Grid item className={classes.gridItem}>
               <UserWidget
                 id={userStat.id}
                 name={userStat.name}
@@ -65,14 +57,9 @@ class UserStatWidget extends Component {
             <Divider
               orientation="vertical"
               flexItem
-              style={{ margin: "1em" }}
+              className={classes.divider}
             />
-            <Grid
-              item
-              style={{
-                flex: "1 0 auto",
-              }}
-            >
+            <Grid item className={classes.gridItem}>
               <Box
                 style={{
                   display: "flex",
@@ -93,14 +80,9 @@ class UserStatWidget extends Component {
             <Divider
               orientation="vertical"
               flexItem
-              style={{ margin: "1em" }}
+              className={classes.divider}
             />
-            <Grid
-              item
-              style={{
-                flex: "1 0 auto",
-              }}
-            >
+            <Grid item className={classes.gridItem}>
               <TotalScoreWidget totalScore={userStat.score} />
             </Grid>
           </Grid>
@@ -115,6 +97,4 @@ UserStatWidget.propTypes = {
   userStat: PropTypes.object.isRequired,
 };
 
-export default withRouter(
-  connect(null, null)(withStyles(styles)(UserStatWidget))
-);
+export default withRouter(withStyles(styles)(UserStatWidget));

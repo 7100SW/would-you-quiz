@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
@@ -14,21 +13,29 @@ const styles = (theme) => ({
     borderRadius: 16,
     backgroundColor: "lightGray",
   },
+  avatar: {
+    backgroundColor: "orange",
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
 });
 
 class UserWidgetComponent extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes, name } = this.props;
+    const avatarUrl =
+      this.props.avatarUrl ||
+      "https://gravatar.com/avatar/8379704d3e414a488c367763356476c6?s=600&d=robohash&r=x";
 
     return (
       <div className={classes.container} style={{ width: "160px" }}>
-        <Avatar src={this.props.avatarUrl} />
+        <Avatar src={avatarUrl} className={classes.avatar} />
         <div
           style={{
             padding: "0.5rem",
           }}
         >
-          <div>{this.props.name}</div>
+          <div>{name}</div>
         </div>
       </div>
     );
@@ -37,12 +44,8 @@ class UserWidgetComponent extends Component {
 
 UserWidgetComponent.propTypes = {
   classes: PropTypes.object.isRequired,
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string,
 };
 
-export const UserWidget = connect(
-  null,
-  null
-)(withStyles(styles)(UserWidgetComponent));
+export const UserWidget = withStyles(styles)(UserWidgetComponent);
