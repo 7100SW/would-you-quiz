@@ -11,7 +11,6 @@ export function runDataInit() {
     dispatch(showLoading());
 
     const response = await API.getInitialData();
-    console.log("GetInitialData Returns", response);
     const { questions, answers, users } = response;
 
     if (users) {

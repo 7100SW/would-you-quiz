@@ -32,8 +32,9 @@ export const logout = () => {
     });
 
     try {
+      localStorage.clear();
       dispatch({
-        type: types.LOGOUT_FAIL,
+        type: types.LOGOUT_SUCCESS
       });
     } catch (e) {
       console.error("logout action error", e);

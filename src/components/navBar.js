@@ -11,6 +11,7 @@ import {
 import { Home } from "@material-ui/icons";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import NavBarUser from "./navBarUser";
 
 const useStyles = makeStyles({
   navbarDisplayFlex: {
@@ -32,7 +33,6 @@ const navLinks = [
   { title: `home`, path: `/home` },
   { title: `leader board`, path: `/leaderboard` },
   { title: `new question`, path: `/add` },
-  { title: `profile`, path: `/profile` },
 ];
 
 const NavBar = () => {
@@ -60,6 +60,7 @@ const NavBar = () => {
                   </ListItem>
                 </Link>
               ))}
+              <NavBarUser/>
             </List>
           </Container>
         </Toolbar>

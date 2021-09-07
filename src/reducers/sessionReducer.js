@@ -2,7 +2,7 @@ import * as types from "../constants/action-types";
 
 const defaultState = {
   authenticated: false,
-  user: null,
+  user: null
 };
 
 const sessionReducer = (state = defaultState, action) => {
@@ -12,6 +12,12 @@ const sessionReducer = (state = defaultState, action) => {
         ...state,
         authenticated: true,
         user: action.payload,
+      };
+
+    case types.LOGOUT_SUCCESS:
+      return {
+        authenticated: false,
+        user: null,
       };
 
     case types.ADD_ANSWER_SUCCESS: {

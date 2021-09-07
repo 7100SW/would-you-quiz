@@ -11,6 +11,7 @@ import { runDataInit } from "./actions";
 import { Dashboard, Home, Profile, QuestionDetail } from "./components";
 import CreatePollAnswer from "./components/createPollAnswer";
 import CreatePollQuestion from "./components/createPollQuestion";
+import LogoutPage from "./components/logoutPage";
 
 class App extends Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path={"/login"} component={LoginPage} />
+          <Route exact path={"/logout"} component={withAuthGuard(LogoutPage)} />
           <Route exact path={"/home"} component={withAuthGuard(Home)} />
           <Route
             exact
