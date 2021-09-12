@@ -1,10 +1,10 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import {withStyles} from "@material-ui/core/styles";
 import PropTypes from "prop-types";
-import { Card, CardHeader } from "@material-ui/core";
+import {Card, CardHeader} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
-import { PollAnswerOptionStatsWidget } from "./pollAnswerOptionStatsWidget";
+import {PollAnswerOptionStatsWidget} from "./pollAnswerOptionStatsWidget";
 
 const styles = () => ({
   root: {
@@ -29,59 +29,57 @@ const styles = () => ({
   },
 });
 
-class PollAnswerWidget extends React.Component {
-  render() {
-    const { classes } = this.props;
-    const { askedBy: author } = this.props.question;
-    const { count: totalVotes } = this.props.answers;
+function PollAnswerWidget(props) {
+  const {classes} = props;
+  const {askedBy: author} = props.question;
+  const {count: totalVotes} = props.answers;
 
-    return (
+  return (
       <Grid
-        className={classes.root}
-        alignItems="center"
-        justifyContent="center"
-        container
+          className={classes.root}
+          alignItems="center"
+          justifyContent="center"
+          container
       >
         <Card className={classes.card}>
           <CardHeader
-            title={`Asked By: ${  author.name}`}
-            className={classes.cardHeader}
+              title={`Asked By: ${author.name}`}
+              className={classes.cardHeader}
           />
           <CardContent
-            style={{
-              width: "95%",
-            }}
+              style={{
+                width: "95%",
+              }}
           >
             <Grid
-              container
-              direction="column"
-              justifyContent="flex-start"
-              alignItems="stretch"
-              spacing={3}
-              style={{
-                padding: "1.0rem",
-              }}
+                container
+                direction="column"
+                justifyContent="flex-start"
+                alignItems="stretch"
+                spacing={3}
+                style={{
+                  padding: "1.0rem",
+                }}
             >
               <Grid item xs={12}>
                 <PollAnswerOptionStatsWidget
-                  answerText={this.props.question.optionOne.text}
-                  users={this.props.answers.optionOne}
-                  totalVotes={totalVotes}
+                    answerText={props.question.optionOne.text}
+                    users={props.answers.optionOne}
+                    totalVotes={totalVotes}
                 />
               </Grid>
               <Grid item xs={12}>
                 <PollAnswerOptionStatsWidget
-                  answerText={this.props.question.optionTwo.text}
-                  users={this.props.answers.optionTwo}
-                  totalVotes={totalVotes}
+                    answerText={props.question.optionTwo.text}
+                    users={props.answers.optionTwo}
+                    totalVotes={totalVotes}
                 />
               </Grid>
             </Grid>
           </CardContent>
         </Card>
       </Grid>
-    );
-  }
+  );
 }
 
 PollAnswerWidget.propTypes = {
